@@ -1,0 +1,15 @@
+.app {
+  min-height: 100vh;
+  position: relative;
+  display: grid;
+  grid-template-rows: 50px 1fr 100px;
+  row-gap: 5px;
+}
+
+.header {
+  grid-row: 1/2;
+}
+
+.footer {
+  grid-row: 3/4
+}

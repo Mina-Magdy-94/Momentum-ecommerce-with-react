@@ -1,0 +1,36 @@
+.card-title,
+.cart-price {
+    color: var(--main-color);
+}
+
+button.cart-btn {
+    color: var(--quad-color);
+    align-self: center;
+    display: block;
+    width: 75%;
+    border: none;
+    border-radius: 5px;
+    padding: 5px 10px;
+}
+
+button.cart-btn:hover,
+.view-btn:hover {
+    opacity: 0.9;
+}
+
+.add-btn,
+.view-btn {
+    background-color: var(--main-color);
+}
+
+.remove-btn {
+    background-color: red;
+}
+
+
+@media (max-width:576px) {
+    button.cart-btn {
+        align-self: stretch;
+        width: 100%;
+    }
+}

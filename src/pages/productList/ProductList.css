@@ -1,0 +1,34 @@
+.hero-image {
+    background-image: url('../../assets/images/hero-image6.jpg');
+    background-repeat: no-repeat;
+    object-fit: cover;
+    background-size: cover;
+    height: 500px;
+    width: 100%;
+}
+
+.hero-image>p {
+    max-width: 400px;
+}
+
+.products-category-title {
+    color: var(--main-color);
+}
+
+.category-filter {
+    cursor: pointer;
+    padding: 5px 10px;
+    border-radius: 10px;
+    font-weight: bold;
+    text-decoration: none;
+}
+
+.active-category-filter {
+    background-color: var(--main-color);
+    color: var(--quad-color);
+}
+
+.inactive-category-filter {
+    color: black;
+
+}
