@@ -15,12 +15,18 @@
     color: var(--main-color);
 }
 
+div.categories {
+    position: sticky;
+    top: 600px;
+}
+
 .category-filter {
     cursor: pointer;
     padding: 5px 10px;
     border-radius: 10px;
     font-weight: bold;
     text-decoration: none;
+
 }
 
 .active-category-filter {

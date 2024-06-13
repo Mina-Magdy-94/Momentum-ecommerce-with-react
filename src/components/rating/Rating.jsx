@@ -2,7 +2,8 @@ import './Rating.css'
 import Star from './star/Star'
 
 
-const Rating = ({ rating: { rate, count } }) => {
+const Rating = ({ rate, count }) => {
+
 
     const calculateFillPercentage = (starIndex) => {
         const starValue = starIndex + 1;
@@ -15,11 +16,11 @@ const Rating = ({ rating: { rate, count } }) => {
         }
     };
     return (
-        <div className='d-flex align-items-center justify-content-start col-gap-1 bg-success'>
+        <div className='d-flex align-items-center justify-content-start col-gap-1'>
             {[1, 2, 3, 4, 5].map((value, index) => (
                 <Star key={value} size={35} style={{ cursor: 'pointer' }} fillPercentage={calculateFillPercentage(index)} />
             ))}
-            <span >{`(${count} Reviews)`}</span>
+            <span >{`(${count ? count : '0'} Reviews)`}</span>
         </div>
     )
 }
