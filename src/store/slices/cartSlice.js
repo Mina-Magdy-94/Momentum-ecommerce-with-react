@@ -11,7 +11,11 @@ const cartSlice = createSlice({
         addToCart: (state, action) => {
             const productIndex = state.cartList.findIndex(product => product.id === action.payload.id)
             if (productIndex !== -1) {
-                state.cartList[productIndex] = action.payload;
+                const prevCount = state.cartList[productIndex].count;
+                state.cartList[productIndex] = {
+                    ...action.payload,
+                    count: prevCount ? prevCount + action.payload.count : action.payload.count
+                };
             } else {
                 state.cartList.push(action.payload)
             }

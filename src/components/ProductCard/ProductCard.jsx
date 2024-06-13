@@ -12,7 +12,7 @@ const ProductCard = ({ product }) => {
     const { addToCart, removeFromCard } = cartActions
 
     // component variables
-    const [isProductInShoppingCart, setIsProductInShoppingCart] = useState(false)
+    const isProductInShoppingCart = cartList.some(prodInCart => prodInCart.id === product.id);
     const { id, title, price, image } = product
 
     // navigator variable
@@ -24,7 +24,7 @@ const ProductCard = ({ product }) => {
         } else {
             dispatch(removeFromCard(productId))
         }
-        setIsProductInShoppingCart((prevState) => !prevState)
+        // setIsProductInShoppingCart((prevState) => !prevState)
     }
 
     const viewDetails = (productId) => {
