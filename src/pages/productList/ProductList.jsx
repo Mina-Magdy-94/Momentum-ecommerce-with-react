@@ -16,7 +16,18 @@ const ProductList = () => {
   let baseURL = "https://fakestoreapi.com/products"
   // const categoryToHtmlElRef = useRef({});
   const [activeCategory, setActiveCategory] = useState('');
-
+  const [selectedSortBy, setSelectedSortBy] = useState('');
+  const getSortedProducts = (categorizedProducts) => selectedSortBy === '' ?
+    categorizedProducts :
+    ([...categorizedProducts].sort((a, b) => {
+      if (selectedSortBy === 'title') {
+        return a.title.localeCompare(b.title);
+      } else if (selectedSortBy === 'price') {
+        return a.price - b.price;
+      } else {
+        throw new Error("Illegal state");
+      }
+    }));
 
   const groupByCategory = (products) => {
     return products.reduce((acc, product) => {
@@ -58,14 +69,23 @@ const ProductList = () => {
 
       <section className="row px-2 px-md-5">
         <div className='categories col-12 d-flex justify-content-start align-items-center flex-wrap gap-3 w-100'>
-          {categories.map((category) => {
-            return (
-              <a href={`#${category}`} key={category} className={`category-filter  ${activeCategory === category ? 'active-category-filter' : 'inactive-category-filter'}`}
-                onClick={() => setActiveCategory(category)}
-              >
-                {category.toUpperCase()}</a>
-            )
-          })}
+          <>
+            {categories.map((category) => {
+              return (
+                <a href={`#${category}`} key={category} className={`category-filter  ${activeCategory === category ? 'active-category-filter' : 'inactive-category-filter'}`}
+                  onClick={() => setActiveCategory(category)}
+                >
+                  {category.toUpperCase()}
+                </a>
+              )
+            })}
+            <span>Sort by: </span>
+            <select className="form-select w-25 col-3" aria-label="Large select example" value={selectedSortBy} onChange={(e) => setSelectedSortBy(e.target.value)}>
+              <option value=''></option>
+              <option value='title'>Title</option>
+              <option value='price'>Price</option>
+            </select>
+          </>
         </div>
 
       </section>
@@ -75,7 +95,7 @@ const ProductList = () => {
           return (
             <section key={category} id={`${category}`} className='row px-2 px-md-5 justify-content-start align-items-center'>
               <h3 className='products-category-title'>{category.toUpperCase()}</h3>
-              {categorizedProducts[category].map((product) => {
+              {getSortedProducts(categorizedProducts[category]).map((product) => {
                 return (
                   < ProductCard key={product.id} product={product} />
                 )
