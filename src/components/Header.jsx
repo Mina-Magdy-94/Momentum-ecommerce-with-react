@@ -9,18 +9,6 @@ const Header = ({ className }) => {
 
     // let {className}=props
     return (
-        // <ul>
-        //     {links.map((link) => {
-        //         return (
-        //             <li key={link}>
-        //                 <NavLink to={`/${link}`} underline="none">
-        //                     {link.toUpperCase()}
-        //                 </NavLink>
-        //             </li>
-        //         );
-        //     })}
-        // </ul>
-
         <nav className={`${className} navbar navbar-expand-lg bg-body-tertiary sticky-top top-0`}>
             <div className="container-fluid">
                 <a className="navbar-brand" href="#">Momentum</a>

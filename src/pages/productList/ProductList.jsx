@@ -6,54 +6,6 @@ import { useLocation, useNavigate } from 'react-router-dom'
 // import { useDispatch, useSelector } from 'react-redux'
 // import { getAllProducts } from '../../API/productsApi'
 
-function useActiveSection(categoryToHtmlEl) {
-  const navigate = useNavigate()
-  const location = useLocation();
-  const sectionRefs = useRef([]);
-  const [activeCategory, setActiveCategory] = useState('');
-  const numCategories = Object.entries(categoryToHtmlEl).length;
-
-  // Populate sectionRefs with references to each section on initial render
-  useEffect(() => {
-    sectionRefs.current = Object.entries(categoryToHtmlEl).map(([category, section]) => ({
-      id: section.id,
-      category: category,
-      top: section.offsetTop,
-      height: section.offsetHeight
-    }));
-  }, [categoryToHtmlEl, numCategories]);
-
-  // Update active section based on scroll position
-  useEffect(() => {
-    const handleScroll = () => {
-      const scrollPosition = window.scrollY;
-
-      // Find the section that is currently in view
-      for (const section of sectionRefs.current) {
-        const { top, category, height } = section;
-        if (scrollPosition >= top - 150 && scrollPosition < top - 150 + height) {
-          setActiveCategory(category);
-          break;
-        }
-      }
-      // setActiveCategory('');
-    };
-
-    // Add scroll event listener
-    window.addEventListener('scroll', handleScroll);
-
-    // Clean up event listener on component unmount
-    return () => {
-      window.removeEventListener('scroll', handleScroll);
-    };
-  }, []);
-
-  useEffect(() => {
-    navigate(`${location.pathname}${activeCategory === '' ? '' : `#${activeCategory}`}`)
-  }, [navigate, location.pathname, activeCategory]);
-
-  return [activeCategory];
-}
 
 const ProductList = () => {
   // const [activeCategory, setActiveCategory] = useState(null)
@@ -62,8 +14,8 @@ const ProductList = () => {
   const [categories, setCategories] = useState([])
   const [categorizedProducts, setCategorizedProducts] = useState([])
   let baseURL = "https://fakestoreapi.com/products"
-  const categoryToHtmlElRef = useRef({});
-  const [activeCategory] = useActiveSection(categoryToHtmlElRef.current);
+  // const categoryToHtmlElRef = useRef({});
+  const [activeCategory, setActiveCategory] = useState('');
 
 
   const groupByCategory = (products) => {
@@ -109,7 +61,7 @@ const ProductList = () => {
           {categories.map((category) => {
             return (
               <a href={`#${category}`} key={category} className={`category-filter  ${activeCategory === category ? 'active-category-filter' : 'inactive-category-filter'}`}
-              // onClick={() => setActiveCategory(category)}
+                onClick={() => setActiveCategory(category)}
               >
                 {category.toUpperCase()}</a>
             )
@@ -121,7 +73,7 @@ const ProductList = () => {
       <section >
         {Object.keys(categorizedProducts).map((category) => {
           return (
-            <section ref={el => categoryToHtmlElRef.current[category] = el} key={category} id={`${category}`} className='row px-2 px-md-5 justify-content-start align-items-center'>
+            <section key={category} id={`${category}`} className='row px-2 px-md-5 justify-content-start align-items-center'>
               <h3 className='products-category-title'>{category.toUpperCase()}</h3>
               {categorizedProducts[category].map((product) => {
                 return (
