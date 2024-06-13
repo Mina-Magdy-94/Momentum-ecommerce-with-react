@@ -4,6 +4,8 @@ import { NavLink } from "react-router-dom";
 const Header = ({ className }) => {
     const links = ["products", "cart"];
     const { cartList } = useSelector(state => state.cart)
+    const cartCount = cartList.map(prod => prod.count).reduce((prev, count) => prev + count, 0);
+
 
     // let {className}=props
     return (
@@ -30,7 +32,7 @@ const Header = ({ className }) => {
                         {links.map((link) => {
                             return (
                                 <li className="nav-item" key={link}>
-                                    <NavLink className={({ isActive }) => isActive ? 'nav-link active' : 'nav-link'} aria-current="page" to={`/${link}`}>{link.toUpperCase()}{link === 'cart' ? `(${cartList.length})` : ''}</NavLink>
+                                    <NavLink className={({ isActive }) => isActive ? 'nav-link active' : 'nav-link'} aria-current="page" to={`/${link}`}>{link.toUpperCase()}{link === 'cart' ? `(${cartCount})` : ''}</NavLink>
                                 </li>
                             )
                         })}

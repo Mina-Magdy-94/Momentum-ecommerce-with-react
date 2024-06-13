@@ -20,7 +20,7 @@ const ProductCard = ({ product }) => {
 
     const changeProductCartStatus = (productId) => {
         if (!isProductInShoppingCart) {
-            dispatch(addToCart(product))
+            dispatch(addToCart({ ...product, count: 1 }))
         } else {
             dispatch(removeFromCard(productId))
         }
