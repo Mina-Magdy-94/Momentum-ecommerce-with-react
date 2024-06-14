@@ -49,16 +49,6 @@ const cartSlice = createSlice({
                 count: state.cartList[productIndex].count + 1
             }
         },
-        // decreaseProductCountByOne: (state, action) => {
-        //     const productIndex = state.cartList.findIndex((product) => product.id === action.payload)
-        //     if(state.cartList[productIndex].count>1){
-        //         state.cartList[productIndex] = {
-        //             ...state.cartList[productIndex],
-        //             count: state.cartList[productIndex].count - 1
-        //         }
-        //     }else{
-
-        //     }
         decreaseProductCountByOneSuccess: (state, action) => {
             const productIndex = state.cartList.findIndex((product) => product.id === action.payload);
             if (state.cartList[productIndex].count > 1) {
@@ -68,20 +58,7 @@ const cartSlice = createSlice({
                 };
             }
         }
-
-
-        // checkProductInCart: (state, action) => {
-        //     console.log(action.payload)
-        //     let productExist = !!state.cartList.find((product) => product.id === action.payload)
-        //     return productExist
-        // }
     },
-    extraReducers: (builder) => {
-        builder
-            .addCase(decreaseProductCountByOneThunk.fulfilled, (state, action) => {
-                // This is needed if you want to handle any additional logic after the thunk is completed
-            });
-    }
 })
 
 export const cartReducer = cartSlice.reducer

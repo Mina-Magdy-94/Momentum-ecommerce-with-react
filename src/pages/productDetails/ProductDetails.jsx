@@ -45,7 +45,7 @@ const ProductDetails = () => {
         <div className='container'>
           <p className=''>{product?.category?.toUpperCase()}</p>
           {product?.id && (
-            <div className='d-flex justify-content-between '>
+            <div className='d-flex flex-column flex-md-row justify-content-between '>
               <LeftSIde product={product} />
               <RightSide product={product} />
             </div>

@@ -1,20 +1,17 @@
-import { useEffect, useRef, useState } from 'react'
+import { useEffect, useState } from 'react'
 import './ProductList.css'
 import ProductCard from '../../components/ProductCard/ProductCard'
 import axios from 'axios'
-import { useLocation, useNavigate } from 'react-router-dom'
-// import { useDispatch, useSelector } from 'react-redux'
-// import { getAllProducts } from '../../API/productsApi'
+
 
 
 const ProductList = () => {
-  // const [activeCategory, setActiveCategory] = useState(null)
-  // let { productsList } = useSelector(state => state.products)
+
+
   const [products, setProducts] = useState([])
   const [categories, setCategories] = useState([])
   const [categorizedProducts, setCategorizedProducts] = useState([])
   let baseURL = "https://fakestoreapi.com/products"
-  // const categoryToHtmlElRef = useRef({});
   const [activeCategory, setActiveCategory] = useState('');
   const [selectedSortBy, setSelectedSortBy] = useState('');
   const getSortedProducts = (categorizedProducts) => selectedSortBy === '' ?
@@ -40,7 +37,6 @@ const ProductList = () => {
     }, {});
   };
 
-  // let dispatch = useDispatch()
 
   let getAllProducts = async () => {
     let response = await axios.get(baseURL)
@@ -54,7 +50,6 @@ const ProductList = () => {
 
   useEffect(() => {
     getAllProducts()
-    // dispatch(getAllProducts())
   }, [])
 
 

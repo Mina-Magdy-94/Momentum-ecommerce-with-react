@@ -22,8 +22,8 @@ const RightSide = ({ product }) => {
 
     return (
         <div className="d-flex flex-column justify-content-start row-gap-3 col-md-4 px-md-3">
-            <div>
-                <h5>{product?.title}</h5>
+            <div className='w-100'>
+                <h5 >{product?.title}</h5>
                 <Rating {...product?.rating} />
                 <p style={{ fontSize: '1.5rem' }}>${product?.price}</p>
             </div>

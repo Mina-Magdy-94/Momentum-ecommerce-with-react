@@ -87,7 +87,7 @@ const Sidebar = ({ isSidebarOpen, closeNav }) => {
                             <div className="third-row m-2">
                                 <div className="d-flex justify-content-between align-items-center">
                                     <span>Subtotal</span>
-                                    <span>{totalPrice}</span>
+                                    <span>{totalPrice.toFixed(2)}</span>
                                 </div>
                                 <div className="d-flex justify-content-between align-items-center">
                                     <span>Shipping</span>
@@ -98,7 +98,7 @@ const Sidebar = ({ isSidebarOpen, closeNav }) => {
                                 </p>
                                 <div className="d-flex justify-content-between align-items-center">
                                     <h6>Total</h6>
-                                    <h6>{totalPrice}</h6>
+                                    <h6>{totalPrice.toFixed(2)}</h6>
                                 </div>
                                 <button className="btn btn-warning">
                                     Secure Checkout

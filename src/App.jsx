@@ -8,7 +8,7 @@ import Sidebar from "./components/sidebar/Sidebar";
 import { useState } from "react";
 
 function App() {
-  const [isSidebarOpen, setIsSidebarOpen] = useState(true);
+  const [isSidebarOpen, setIsSidebarOpen] = useState(false);
 
 
   const openNav = () => {
@@ -21,16 +21,9 @@ function App() {
     setIsSidebarOpen(false);
   };
 
-  // useEffect(() => {
-  //   console.log({ isSidebarOpen })
-  // }, [isSidebarOpen])
-
   return (
-    // ${isSidebarOpen ? 'overflow-hidden' : ''}
     <div className={`app ${isSidebarOpen ? 'overflow-hidden' : ''}`}>
-      {/* isSidebarOpen={isSidebarOpen} closeNav={closeNav} */}
       {isSidebarOpen && <Sidebar isSidebarOpen={isSidebarOpen} closeNav={closeNav} />}
-      {/* openNav={openNav} */}
       <Header className='header' openNav={openNav} />
       <Routes>
         <Route path="/" element={<Navigate to="products" replace />} />
