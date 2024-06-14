@@ -25,11 +25,13 @@ function App() {
     <div className={`app ${isSidebarOpen ? 'overflow-hidden' : ''}`}>
       {isSidebarOpen && <Sidebar isSidebarOpen={isSidebarOpen} closeNav={closeNav} />}
       <Header className='header' openNav={openNav} />
-      <Routes>
-        <Route path="/" element={<Navigate to="products" replace />} />
-        <Route path="products" element={<ProductList />} />
-        <Route path="products/:id" element={<ProductDetails />} />
-      </Routes>
+      <div className="changable-content">
+        <Routes>
+          <Route path="/" element={<Navigate to="products" replace />} />
+          <Route path="products" element={<ProductList />} />
+          <Route path="products/:id" element={<ProductDetails />} />
+        </Routes>
+      </div>
       <Footer className='footer' />
     </div>
   );

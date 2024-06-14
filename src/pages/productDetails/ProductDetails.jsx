@@ -63,7 +63,7 @@ const ProductDetails = () => {
       )}
 
       {isLoading && (
-        <div className='d-flex justify-content-center align-items-center'>
+        <div className='d-flex justify-content-center align-items-center' style={{ height: '100vh' }}>
           <Spinner />
         </div>
       )}
