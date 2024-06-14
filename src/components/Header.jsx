@@ -11,7 +11,7 @@ const Header = ({ className, openNav }) => {
 
 
     return (
-        <nav className={`${className} navbar navbar-expand-lg bg-body-tertiary sticky-top top-0`}>
+        <nav className={`${className} navbar navbar-expand-lg bg-body-tertiary fixed-top top-0`}>
             <div className="container-fluid">
                 <a className="navbar-brand" href="#">Momentum</a>
                 <button className="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
