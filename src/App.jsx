@@ -12,12 +12,10 @@ function App() {
 
 
   const openNav = () => {
-    console.log('openNav')
     setIsSidebarOpen(true);
   };
 
   const closeNav = () => {
-    console.log("closeNav")
     setIsSidebarOpen(false);
   };
 

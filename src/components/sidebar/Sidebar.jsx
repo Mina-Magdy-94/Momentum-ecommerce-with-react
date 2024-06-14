@@ -28,8 +28,6 @@ const Sidebar = ({ isSidebarOpen, closeNav }) => {
         dispatch(increaseProductCountByOne(productId))
     }
 
-    console.log({ cartCount }, typeof cartCount, !cartCount)
-
     return (
         <>
             <div className="parent d-flex justify-content-start ">
