@@ -4,17 +4,38 @@ import Footer from "./components/Footer";
 import Header from "./components/Header";
 import ProductList from "./pages/productList/ProductList";
 import ProductDetails from "./pages/productDetails/ProductDetails";
-import Cart from "./pages/cart/Cart";
+import Sidebar from "./components/sidebar/Sidebar";
+import { useState } from "react";
 
 function App() {
+  const [isSidebarOpen, setIsSidebarOpen] = useState(true);
+
+
+  const openNav = () => {
+    console.log('openNav')
+    setIsSidebarOpen(true);
+  };
+
+  const closeNav = () => {
+    console.log("closeNav")
+    setIsSidebarOpen(false);
+  };
+
+  // useEffect(() => {
+  //   console.log({ isSidebarOpen })
+  // }, [isSidebarOpen])
+
   return (
-    <div className="app">
-      <Header className='header' />
+    // ${isSidebarOpen ? 'overflow-hidden' : ''}
+    <div className={`app ${isSidebarOpen ? 'overflow-hidden' : ''}`}>
+      {/* isSidebarOpen={isSidebarOpen} closeNav={closeNav} */}
+      {isSidebarOpen && <Sidebar isSidebarOpen={isSidebarOpen} closeNav={closeNav} />}
+      {/* openNav={openNav} */}
+      <Header className='header' openNav={openNav} />
       <Routes>
         <Route path="/" element={<Navigate to="products" replace />} />
         <Route path="products" element={<ProductList />} />
         <Route path="products/:id" element={<ProductDetails />} />
-        <Route path="cart" element={<Cart />} />
       </Routes>
       <Footer className='footer' />
     </div>

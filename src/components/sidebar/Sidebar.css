@@ -1,0 +1,95 @@
+.parent {
+    height: 100vh;
+    width: 100%;
+    top: 0px;
+    position: absolute;
+    z-index: 99999;
+}
+
+.left.overlay {
+    background-color: black;
+    opacity: 0.8;
+    align-self: stretch;
+    height: 100%;
+    width: calc(100% - 330px);
+    transition: width 0.5s ease;
+}
+
+aside.right {
+    display: flex;
+    flex-direction: column;
+    padding: 20px 10px;
+    width: 330px;
+    transition: width 0.5s ease;
+    position: relative;
+    top: 0;
+    right: 0;
+}
+
+.invisible {
+    width: 0px !important;
+}
+
+
+/* first row */
+.first-row>:first-child {
+    width: 150px
+}
+
+.first-row>:last-child {
+    width: 50px
+}
+
+/* second row */
+.second-row,
+.third-row {
+    display: flex;
+    flex-direction: column;
+    height: 350px;
+    row-gap: 20px;
+}
+
+.second-row {
+    overflow-y: auto;
+}
+
+.product-item {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start
+}
+
+.product-item>.item-left {
+    width: 85px;
+}
+
+.product-item>.item-left>img {
+    width: 100%;
+    height: 55px;
+}
+
+.product-item>.item-right {
+    width: 200px;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    justify-content: space-between;
+}
+
+.item-right>.row-1>:first-child,
+.item-right>.row-2>:first-child {
+    width: 130px;
+}
+
+
+/* third row */
+.third-row {
+    font-size: 12px;
+}
+
+
+.close-btn-container {
+    display: flex;
+    /* justify-content: flex-start; */
+    height: 10px;
+}

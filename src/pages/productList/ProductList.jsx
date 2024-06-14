@@ -80,7 +80,7 @@ const ProductList = () => {
               )
             })}
             <span>Sort by: </span>
-            <select className="form-select w-25 col-3" aria-label="Large select example" value={selectedSortBy} onChange={(e) => setSelectedSortBy(e.target.value)}>
+            <select className="sort-by-select-input" aria-label="Large select example" value={selectedSortBy} onChange={(e) => setSelectedSortBy(e.target.value)}>
               <option value=''></option>
               <option value='title'>Title</option>
               <option value='price'>Price</option>
