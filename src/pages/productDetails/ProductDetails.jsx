@@ -12,7 +12,7 @@ import Sidebar from '../../components/sidebar/Sidebar'
 
 const ProductDetails = () => {
   const { id } = useParams()
-  const baseURL = "https://fakestoreapi.com/products"
+  const baseURL = import.meta.env.VITE_ALL_PRODUCTS_API
   const [product, setProduct] = useState({})
   const [error, setError] = useState(null)
   const [isLoading, setIsLoading] = useState(false)

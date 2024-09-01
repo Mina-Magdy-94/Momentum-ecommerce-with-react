@@ -5,6 +5,7 @@ import { CiCircleMinus } from "react-icons/ci";
 import { CiCirclePlus } from "react-icons/ci";
 import { cartActions } from "../../store/slices/cartSlice";
 import { decreaseProductCountByOneThunk } from "../../store/slices/cartSlice"
+import { ProductItem } from "./ProductItem/ProductItem";
 
 const Sidebar = ({ isSidebarOpen, closeNav }) => {
     const { cartList } = useSelector(state => state.cart)
@@ -48,35 +49,13 @@ const Sidebar = ({ isSidebarOpen, closeNav }) => {
                     <hr />
 
 
-                    {cartCount && (
+                    {cartCount ? (
                         <>
                             {/* second row */}
                             <div className="second-row">
                                 {cartList.length && cartList.map((item, index) => {
                                     return (
-                                        <div key={item.id} className="product-item">
-                                            <div className="item-left">
-                                                <img src={item.image} alt={`product ${index + 1}`} height="55" />
-                                                <div className="d-flex justify-content-between align-items-center">
-                                                    <CiCircleMinus size={25} style={{ cursor: 'pointer' }} onClick={() => decreaseByOne(item.id)} />
-                                                    <span>{item.count}</span>
-                                                    <CiCirclePlus size={25} style={{ cursor: 'pointer' }} onClick={() => increaseByOne(item.id)} />
-                                                </div>
-                                            </div>
-                                            <div className="item-right">
-                                                {/* row one in the right div */}
-                                                <div className="row-1 d-flex justify-content-between align-items-start">
-                                                    <h6>{item.title}</h6>
-                                                    <span>${item.price}</span>
-                                                </div>
-                                                {/* row two in the right div */}
-                                                <div className="row-2 d-flex justify-content-between align-items-start">
-                                                    <span style={{ fontSize: '10px' }}>In stock! Ships in 5–10 business days</span>
-                                                    <span style={{ fontSize: '10px', textDecoration: 'underline', cursor: 'pointer' }} onClick={() => removeProduct(item.id)}>remove</span>
-                                                </div>
-                                                <hr />
-                                            </div>
-                                        </div>
+                                        <ProductItem key={item.id} item={item} index={index} />
                                     )
                                 })}
                             </div>
@@ -102,12 +81,10 @@ const Sidebar = ({ isSidebarOpen, closeNav }) => {
                                     Secure Checkout
                                 </button>
                             </div>
-                        </>
-                    )
+                        </>)
+                        :
+                        (<p>Your Cart Is Empty</p>)
                     }
-
-                    {cartCount === 0 && (<p>Your Cart Is Empty</p>)}
-
                 </aside >
             </div>
         </>

@@ -7,7 +7,7 @@ import Spinner from '../../components/spinner/Spinner'
 
 
 const ProductList = () => {
-  let baseURL = "https://fakestoreapi.com/products"
+  const baseURL = import.meta.env.VITE_ALL_PRODUCTS_API
 
   const [isLoading, setIsLoading] = useState(false)
   const [error, setError] = useState(null)

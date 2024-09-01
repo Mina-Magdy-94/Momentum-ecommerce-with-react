@@ -1,0 +1,27 @@
+.product-item {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start
+}
+
+.product-item>.item-left {
+    width: 85px;
+}
+
+.product-item>.item-left>img {
+    width: 100%;
+    height: 55px;
+}
+
+.product-item>.item-right {
+    width: 200px;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    justify-content: space-between;
+}
+
+.item-right>.row-1>:first-child,
+.item-right>.row-2>:first-child {
+    width: 130px;
+}
