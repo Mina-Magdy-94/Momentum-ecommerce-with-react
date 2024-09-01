@@ -1,0 +1,12 @@
+.description {
+    transition: all 0.5s linear;
+    transform-origin: top left;
+}
+
+.show {
+    transform: scaleY(1);
+}
+
+.hide {
+    transform: scaleY(0);
+}

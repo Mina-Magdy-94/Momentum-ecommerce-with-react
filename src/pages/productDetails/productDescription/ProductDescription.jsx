@@ -17,7 +17,7 @@ const ProductDescription = ({ description }) => {
                 </section>
                 <hr />
             </div>
-            {isShowDescriptionAccordion && <p className='col-12'>{description}</p>}
+            {<p className={`col-12 description ${isShowDescriptionAccordion ? 'show' : 'hide'}`}>{description}</p>}
         </div>
     )
 }
